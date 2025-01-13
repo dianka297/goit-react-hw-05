@@ -3,12 +3,9 @@ import { lazy, Suspense } from 'react';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage'));
-const MovieDetailsPage = lazy(() =>
- import('./pages/MovieDetailsPage/MovieDetailsPage')
-);
+const MoviesDetailsPage = lazy(() => import("../pages/MoviesDetailsPage"));
 const NotFoundPage = lazy(() =>
-  import('./pages/NotFoundPage/NotFoundPage')
-);
+  import('./pages/NotFoundPage/NotFoundPage'));
 
 const Navigation = lazy(() => import('./Navigation/Navigation'));
 const MovieCast = lazy(() => import('./MovieCast/MovieCast'));
