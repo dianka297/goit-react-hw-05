@@ -1,0 +1,21 @@
+.HomePage {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .titleHomePage {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .titleHomePage {
+      font-size: 32px;
+    }
+  }

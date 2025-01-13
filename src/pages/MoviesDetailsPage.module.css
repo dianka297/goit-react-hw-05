@@ -1,0 +1,105 @@
+.movieDetailsPage {
+    padding: 20px;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+  }
+  
+  .movieDetailsPage a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .movieDetailsPage a:hover {
+    color: #121212;
+    transform: scale(1.1);
+  }
+  
+  .movieDetailsPage img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+  }
+  
+  .movieDetailsPage h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+  
+  .movieDetailsPage p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 10px;
+  }
+  
+  .movieDetailsPage nav {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .movieDetailsPage .backLink {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: linear-gradient(90deg, #1e1e1e);
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .movieDetailsPage .backLink:hover {
+    background-color: #121212;
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+  
+  .movieDetailsPage .details {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .wrapper {
+      display: flex;
+      gap: 20px;
+    }
+  
+    .movieDetailsPage h1 {
+      font-size: 32px;
+    }
+    .movieDetailsInfo {
+      height: 300px;
+    }
+  }
+  
+  .movieDetailsInfo {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(90deg, #1e1e1e);
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  .movieDetailsInfo h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .movieDetailsInfo p {
+    margin: 5px 0;
+  }

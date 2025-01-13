@@ -1,55 +1,38 @@
-import { useEffect, useState } from 'react';
-import { getMovies } from '../../apiService/movies';
-import { useParams } from 'react-router-dom';
-import styles from './MovieReviews.module.css';
-import Loader from '../Loader/Loader';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { useParams } from "react-router-dom";
+import { getMovieReviews } from "../../services/api";
+import useHttp from "../../hooks/useHttp";
+import { InfinitySpin } from "react-loader-spinner";
 
-export default function MovieReviews() {
+const MovieReviews = () => {
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState([]);
-  const [loader, setLoader] = useState(false);
-  const [error, setError] = useState('');
-  const [empty, setEmpty] = useState(false);
-  const url = `movie/${movieId}/reviews`;
 
-  useEffect(() => {
-    setError('');
-    setLoader(true);
-    async function fetchData() {
-      try {
-        const { results } = await getMovies(url, '');
-        results.length ? setReviews(results) : setEmpty(true);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoader(false);
-      }
-    }
+  const { data: reviews, loading, isError } = useHttp(getMovieReviews, movieId);
 
-    fetchData();
-  }, [movieId]);
+  if (loading) {
+    return <InfinitySpin />;
+  }
+  if (isError) {
+    return <p>Не вдалось завантажити дані про відгуки.</p>;
+  }
+
+  const reviewList = reviews?.results || [];
 
   return (
-    <>
-      {loader && <Loader />}
-      {error && <ErrorMessage message={error} />}
-      <div className={styles.review}>
-        {!empty ? (
-          <ul className={styles.list}>
-            {reviews.map(review => {
-              return (
-                <li key={review.id}>
-                  <h3 className={styles.title}>Author: {review.author}</h3>
-                  <p>{review.content}</p>
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <p>No Rewiews</p>
-        )}
-      </div>
-    </>
+    <div>
+      {reviewList.length > 0 ? (
+        <ul>
+          {reviewList.map((review) => (
+            <li key={review.id}>
+              <p>{review.content || "Відгук без змісту"}</p>
+              <p>- {review.author || "Невідомий автор"}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Немає відгуків</p>
+      )}
+    </div>
   );
-}
+};
+
+export default MovieReviews;
